@@ -12,12 +12,10 @@ int create_cachedirtag() {
     FILE *f;
 
     // Check if file already exists
-    if (stat(filename.c_str(), &st) == 0) {
-        errno = EEXIST;
-        return -1;
+    if (stat(filename.c_str(), &st) == -1) {
+        f = fopen(filename.c_str(), "w");
     }
 
-	f = fopen(filename.c_str(), "w");
     if (f == nullptr) {
         return -1;
     }

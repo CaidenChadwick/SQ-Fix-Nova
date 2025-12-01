@@ -10,11 +10,10 @@ int create_cachedirtag() {
     std::string filename = "cache_tag.txt";
     struct stat st;
     FILE *f;
+    unlink(filename.c_str());
 
-    // Check if file already exists
-    if (stat(filename.c_str(), &st) == -1) {
-        f = fopen(filename.c_str(), "r");
-    }
+    f = fopen(filename.c_str(), "r");
+
 
     if (f == nullptr) {
         return -1;
